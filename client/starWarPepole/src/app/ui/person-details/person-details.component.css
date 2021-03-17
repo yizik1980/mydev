@@ -1,0 +1,10 @@
+.wrapper{
+    text-align: left;
+}
+.row{
+    display: inline-block;
+    vertical-align: middle;
+}
+.row p span:nth-of-type(n+2){
+    font-size: .7rem;
+}

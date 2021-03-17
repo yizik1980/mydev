@@ -1,0 +1,41 @@
+<div class="container">
+    <h2>{{person?.personItem.name}}</h2>
+    <div class="wrapper">
+        <div class="padding">
+            <div class="row">
+                <h3>Description</h3>
+                <p><span>Height:</span><span>{{person?.personItem.height}}</span></p>
+                <p><span>Mass:</span><span>{{person?.personItem.mass}}</span></p>
+                <p><span>Hair color:</span><span class="smallcube" [ngStyle]="{'background':person?.personItem.hair_color}"></span><span>{{person?.personItem.hair_color}}</span></p>
+                <p><span>Skin color:</span><span class="smallcube" [ngStyle]="{'background':person?.personItem.skin_color}"></span><span>{{person?.personItem.skin_color}}</span></p>
+                <p><span>Gender:</span><span  >{{person?.personItem.gender}}</span></p>
+                <p><span>Birth Year:</span><span>{{person?.personItem.birth_year}}</span></p>
+            </div>
+            <div class="row">
+                <h3>List Of Movies</h3>
+                <div *ngFor="let film of person?.films" class="film">
+                    <h4  >{{film.title}}</h4>
+                    <p><span>opening:</span><span>{{film.opening_crawl}}</span></p>
+                    <p><span>director:</span><span>{{film.director}}</span></p>
+                    <p><span>producer:</span><span>{{film.producer}}</span></p>
+                    <p><span>released:</span><span>{{film.release_date | date : 'short'}}</span></p>
+                    <ul><li *ngFor="let character of film.character"><a href="#{{film.character}}">{{film.character}}</a></li></ul>
+                </div>
+               
+            </div>
+            <div class="row" *ngIf="person?.species.length">
+                <h3>List Of specy</h3>
+                <div *ngFor="let specy of person?.species" class="film">
+                    <h4  >{{specy.name}}</h4>
+                    <p><span>language:</span><span>{{specy.language}}</span></p>
+                    <p><span>hair colors:</span><span>{{specy.hair_colors}}</span></p>
+                    <p><span>skin color:</span><span>{{specy.skin_colors }}</span></p>
+                    <p><span>classification:</span><span>{{specy.classification }}</span></p>
+                    <p><span>average height</span><span>{{specy.average_height}}</span></p>
+                </div>
+               
+            </div>
+
+        </div>
+    </div>
+</div>

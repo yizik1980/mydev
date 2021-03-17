@@ -1,0 +1,29 @@
+<div
+  class="popup"
+  *ngIf="dialogData?.show"
+  [class]="{ wide: dialogData?.wide }"
+>
+  <div class="close" (click)="close()"></div>
+
+  <div class="container">
+    <div class="backtap" (click)="close()"></div>
+    <h2 *ngIf="dialogData?.title" class="mr-b">{{ dialogData?.title }}</h2>
+
+    <div [ngSwitch]="dialogData.componentName">
+      <ng-template [ngSwitchCase]="'person'">
+        <app-person-details
+          [person]="dialogData?.dynamicObject"
+        ></app-person-details>
+      </ng-template>
+      <ng-template ngSwitchDefault>
+        <div class="dialog-model">
+          <h3 *ngIf="dialogData?.innerTitle" class="mr-b">
+            {{ dialogData?.innerTitle }}
+          </h3>
+
+          <p *ngIf="dialogData?.text" class="mr-b">{{ dialogData?.text }}</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

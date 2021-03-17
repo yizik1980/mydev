@@ -1,0 +1,11 @@
+<div class="head template-seven grid center">
+    <aside class="cursor" (click)="sort(prop)" *ngFor="let prop of props">{{prop}}</aside>
+</div>
+<div class="table">
+    <app-grid-item *ngFor="let person of starwarPeople; let i = index" [personItem]="person" [index]="i"></app-grid-item>
+</div>
+<div class="pagnation">
+    <ul class="flex">
+        <li *ngFor="let page of paging.pages" [ngClass]="{'on': page == paging.current}" (click)="showPage(page)" >{{page}}</li>
+    </ul>
+</div>
