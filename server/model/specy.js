@@ -1,5 +1,6 @@
 class specy {
   constructor(arg) {
+    this.specyId = arg.url? parseInt(arg.url.replace(/[^0-9]+/g,'')) :0;
     this.name = arg.name;
     this.classification = arg.classification;
     this.designation = arg.designation;

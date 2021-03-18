@@ -21,6 +21,14 @@ class starWarInfo {
       return request.get(`${this.url}/${serviceName}/${id}`, callBack);
     }
   }
+  ////
+  // search people
+  //
+  getPeopleSearchQuery(txt,callBack){
+      if(txt && txt.length>1){
+          return Request.get(`${this.url}/people/?search=${txt}`, callBack);
+      }
+  }
 }
 
 module.exports = starWarInfo;

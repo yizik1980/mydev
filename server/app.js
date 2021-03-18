@@ -1,11 +1,12 @@
-var createError = require('http-errors');
+
 var express = require('express');
-var path = require('path');
+var dal = require('./dal/dataAccess');
 //var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var SwapiController = require('./routes/swapi-controller');
 var filmController = require('./routes/film-controller');
 var specyController = require('./routes/specy-controller');
+var pageController = require('./routes/pages-controller');
 var cors = require('cors')
 var app = express()
  
@@ -13,19 +14,19 @@ app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
+dal.connectToData();
 
 
 app.use('/api/people', SwapiController);
 app.use('/api/films', filmController);
 app.use('/api/species', specyController);
+app.use('/api/page/',pageController);
 app.use('*',(req,res)=>{
   res.json({msg:'route not avialble'})
-})
-// catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   next(createError(404));
-// });
+});
+
+
+
 
 // error handler
 app.use(function(err, req, res, next) {

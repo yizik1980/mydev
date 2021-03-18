@@ -7,4 +7,5 @@ export interface specy {
     hair_colors: string;
     average_lifespan: string;
     language: string;
+    specyId:string;
 }

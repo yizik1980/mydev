@@ -17,10 +17,11 @@ export class GridItemComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  showPerson(index:number){
+  showPerson(index:string){
+    debugger;
     const dialog = new DialogData('person',true);
     if(index){
-      this.swService.getOnePerson(index+'').subscribe(personItem=>{
+      this.swService.getOnePerson(index).subscribe(personItem=>{
   
         this.swService.getFilms(personItem.films).then(films=>{
 

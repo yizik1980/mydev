@@ -1,4 +1,5 @@
 export default interface starWarPerson{
+        personId:string;
         name: string;
         height: number;
         mass: number;

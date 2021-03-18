@@ -1,9 +1,9 @@
-<div class="template-seven grid center cursor" (click)="showPerson(personItem.url)">
+<div class="template-seven grid center cursor" (click)="showPerson(personItem.personId)">
   <aside>{{ personItem?.name }}</aside>
   <aside>{{ personItem?.height }}</aside>
   <aside>{{ personItem?.mass }}</aside>
   <aside>{{ personItem?.hair_color }}</aside>
   <aside>{{ personItem?.skin_color }}</aside>
   <aside>{{ personItem?.gender }}</aside>
-  <aside>{{ personItem?.birth_year | number }}</aside>
+  <aside>{{ personItem?.birth_year }}</aside>
 </div>

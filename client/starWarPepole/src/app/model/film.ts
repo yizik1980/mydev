@@ -6,4 +6,5 @@ export interface film {
     producer: string;
     release_date: string;
     characters: string[];
+    filmId:string;
 }

@@ -13,10 +13,10 @@ import starWarPerson from '../model/starWarPerson';
 export class StarWarInfoService {
 
   constructor(private http: HttpClient) { }
-  getAllPepole(page?: number): Observable<{ results: starWarPerson[], count: number }> {
+  getAllPepole(page?: number): Observable<starWarPerson[]> {
     page = page - 1;
     const url = environment.url + 'people' + '?p=' + page;
-    return this.http.get<{ results: starWarPerson[], count: number }>(url).pipe(catchError(err => {
+    return this.http.get<starWarPerson[]>(url).pipe(catchError(err => {
       throw err;
     }));
   }
@@ -53,5 +53,8 @@ export class StarWarInfoService {
   }
   getspecy(id): Observable<specy> {
     return this.http.get<specy>(environment.url + 'species/' + id);
+  }
+  getPagesData():Observable<{amount:number}>{
+    return this.http.get<{amount:number}>(environment.url + 'page/people');
   }
 }

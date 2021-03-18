@@ -20,18 +20,20 @@ export class PepoleGridComponent implements OnInit, OnChanges, OnDestroy {
   }
   ngOnInit(): void {
     this.props = ['name','height','mass','hair color', 'skin color','gender','birth year'];
-    this.setGridPage(1);
+    this.setGridPage(1).then(()=>{
+      this.swService.getPagesData().subscribe(result=>{
+        let rows = this.starwarPeople.length;
+        let len = result.amount;
+        this.paging = new Paging(len,rows);
+        this.paging.setCurrent(1);
+        this.changeRef.detectChanges();
+      })
+    })
+  
   }
   setGridPage(i:number){
-    this.subscription = this.swService.getAllPepole(i).subscribe(res => {
-      this.starwarPeople = res.results;
-      this.length = res.count;
-      if(i==1){
-        let rows = res.results.length;
-        let len =this.length;
-        this.paging = new Paging(len,rows); 
-      }
-      this.paging.setCurrent(i);
+    return this.swService.getAllPepole(i).toPromise().then(res => {
+      this.starwarPeople = res;
       this.changeRef.detectChanges();
     });
   }
@@ -74,7 +76,7 @@ export class PepoleGridComponent implements OnInit, OnChanges, OnDestroy {
 
 
   showPage(page:number){
-    debugger;
-    this.setGridPage(page);
+    this.setGridPage(page)
+    this.paging.setCurrent(page)
   }
 }
