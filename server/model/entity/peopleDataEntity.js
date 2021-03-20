@@ -13,5 +13,8 @@ class PeopleEntity{
     getOnePerson(id){
         return personSw.find({personId:id}).exec();
     }
+    findPeopleByName(text){
+        return personSw.find({name:{$regex:new RegExp(text)}});
+    }
 }
 module.exports = PeopleEntity;

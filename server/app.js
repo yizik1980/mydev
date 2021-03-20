@@ -7,6 +7,7 @@ var SwapiController = require('./routes/swapi-controller');
 var filmController = require('./routes/film-controller');
 var specyController = require('./routes/specy-controller');
 var pageController = require('./routes/pages-controller');
+var peopleController = require('./routes/people-controller')
 var cors = require('cors')
 var app = express()
  
@@ -17,7 +18,8 @@ app.use(express.urlencoded({ extended: false }));
 dal.connectToData();
 
 
-app.use('/api/people', SwapiController);
+//app.use('/api/people', SwapiController); /// version 1
+app.use('/api/people', peopleController);
 app.use('/api/films', filmController);
 app.use('/api/species', specyController);
 app.use('/api/page/',pageController);

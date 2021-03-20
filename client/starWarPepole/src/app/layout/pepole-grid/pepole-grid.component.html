@@ -6,6 +6,10 @@
 </div>
 <div class="pagnation">
     <ul class="flex">
-        <li *ngFor="let page of paging.pages" [ngClass]="{'on': page == paging.current}" (click)="showPage(page)" >{{page}}</li>
+        <li  *ngIf="paging.before" (click)="showPage(paging.before)" >{{paging.before}}</li>
+        <li  class="on" >{{paging.current}}</li>
+        <li *ngIf="paging.after <= paging.topLimit" (click)="showPage(paging.after)" >{{paging.current+1}}</li>
+        <li  (click)="showPage(paging.after)"  *ngIf="paging.after <= paging.topLimit">...</li>
+        <!-- <li *ngFor="let page of paging.pages" [ngClass]="{'on': page == paging.current}"  >{{page}}</li> -->
     </ul>
 </div>

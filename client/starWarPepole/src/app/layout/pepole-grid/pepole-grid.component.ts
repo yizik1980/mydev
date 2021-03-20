@@ -76,7 +76,9 @@ export class PepoleGridComponent implements OnInit, OnChanges, OnDestroy {
 
 
   showPage(page:number){
-    this.setGridPage(page)
+    
     this.paging.setCurrent(page)
+    this.setGridPage(page)
+    
   }
 }

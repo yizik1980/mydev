@@ -6,6 +6,9 @@ class DataPageEntityStarWar{
     validateDataHasMigrated(page, type,callBack){
         return pageSw.find({pageId:page, type}, callBack);
     }
+    isPageExist(pageId){
+        return pageSw.find({pageId}).exec();
+    }
     async addPageType(pageId, type, amount){
         if(pageId && type){
             const pageOb = new pageSw({pageId,type, amount})
