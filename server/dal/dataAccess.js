@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 mongoose.set('useFindAndModify', false);
+require('dotenv').config()
 function connectAsync() {
   return new Promise((resolve, reject) => {
     // const connStr = config.mongodb.connectionString;
-    const connStr =
-      "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false";
-    const options = {
+    const connStr = process.env.CONNECTION;
+       const options = {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
